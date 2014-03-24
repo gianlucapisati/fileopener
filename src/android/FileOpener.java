@@ -20,16 +20,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import org.apache.cordova.api.Plugin;
+import org.apache.cordova.api.CDVPlugin;
 import org.apache.cordova.api.PluginResult;
 
-public class FileOpener extends Plugin {
-
+public class FileOpener extends CDVPlugin {
+    
     @Override
     public PluginResult execute(String action, JSONArray args, String callbackId) {
         PluginResult.Status status = PluginResult.Status.OK;
         String result = "";
-
+        
         try {
             if (action.equals("openFile")) {
                 openFile(args.getString(0));
@@ -44,14 +44,14 @@ public class FileOpener extends Plugin {
             return new PluginResult(PluginResult.Status.IO_EXCEPTION);
         }
     }
-
+    
     private void openFile(String url) throws IOException {
         // Create URI
         Uri uri = Uri.parse(url);
-
+        
         Intent intent = null;
         // Check what kind of file you are trying to open, by comparing the url with extensions.
-        // When the if condition is matched, plugin sets the correct intent (mime) type, 
+        // When the if condition is matched, plugin sets the correct intent (mime) type,
         // so Android knew what application to use to open the file
         
         if (url.contains(".doc") || url.contains(".docx")) {
@@ -94,8 +94,8 @@ public class FileOpener extends Plugin {
             // Video files
             intent = new Intent(Intent.ACTION_VIEW);
             intent.setDataAndType(uri, "video/*");
-        }         
-                
+        }
+        
         //if you want you can also define the intent type for any other file
         
         //additionally use else clause below, to manage other unknown extensions
@@ -106,8 +106,8 @@ public class FileOpener extends Plugin {
             intent = new Intent(Intent.ACTION_VIEW);
             intent.setDataAndType(uri, "*/*");
         }
-
+        
         this.cordova.getActivity().startActivity(intent);
     }
-
+    
 }
