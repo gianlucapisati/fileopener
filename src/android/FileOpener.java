@@ -20,12 +20,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import org.apache.cordova.api.CDVPlugin;
-import org.apache.cordova.api.PluginResult;
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PluginResult;
 
-public class FileOpener extends CDVPlugin {
+public class FileOpener extends CordovaPlugin {
     
-    @Override
     public PluginResult execute(String action, JSONArray args, String callbackId) {
         PluginResult.Status status = PluginResult.Status.OK;
         String result = "";
