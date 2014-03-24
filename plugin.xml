@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="org.apache.cordova.fileopener"
+      version="0.3.3">
+
+    <name>FileOpener</name>
+    <description>Cordova InAppBrowser Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,in,app,browser,inappbrowser</keywords>
+    <repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</repo>
+    <issue>https://issues.apache.org/jira/browse/CB/component/12320641</issue>
+
+    <engines>
+      <engine name="cordova" version=">=3.1.0" /><!-- Needs cordova/urlutil -->
+    </engines>
+    
+    <!-- android -->
+    <platform name="android">
+        <js-module src="www/fileopener.js" name="inappbrowser">
+            <clobbers target="window.plugins.fileOpener.open" />
+        </js-module>
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="FileOpener"> 
+                <param name="android-package" value="org.apache.cordova.fileopener.FileOpener"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/FileOpener.java" target-dir="src/org/apache/cordova/fileopener" />
+
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <js-module src="www/fileopener.js" name="inappbrowser">
+            <clobbers target="window.open" />
+        </js-module>  
+        <config-file target="config.xml" parent="/*">
+            <feature name="InAppBrowser">
+                <param name="ios-package" value="CDVInAppBrowser" /> 
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVInAppBrowser.h" />
+	    <source-file src="src/ios/CDVInAppBrowser.m" />
+	    
+	    <framework src="CoreGraphics.framework" />
+    </platform>
+        
+
+</plugin>
