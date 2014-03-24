@@ -17,7 +17,7 @@
     
     <!-- android -->
     <platform name="android">
-        <js-module src="www/fileopener.js" name="inappbrowser">
+        <js-module src="www/android/fileopener.js" name="inappbrowser">
             <clobbers target="window.plugins.fileOpener.open" />
         </js-module>
         <config-file target="res/xml/config.xml" parent="/*">
@@ -32,7 +32,7 @@
 
     <!-- ios -->
     <platform name="ios">
-        <js-module src="www/fileopener.js" name="inappbrowser">
+        <js-module src="www/ios/fileopener.js" name="inappbrowser">
             <clobbers target="window.open" />
         </js-module>  
         <config-file target="config.xml" parent="/*">

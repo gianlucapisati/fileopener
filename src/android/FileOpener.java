@@ -6,7 +6,7 @@
  * Copyright (c) 2011, IBM Corporation
  */
 
-package com.phonegap.plugins.fileopener;
+package org.apache.cordova.fileopener;
 
 import java.io.File;
 import java.io.FileOutputStream;
